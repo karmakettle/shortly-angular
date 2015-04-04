@@ -5,9 +5,11 @@ angular.module('shortly.shorten', [])
 
   $scope.addLink = function(){
    Links.addLink()
-    .then(function(links){
-      //links comes as an array of objects 
-      // $scope.data.links = links;
+    .then(function(link){
+      //get the link. 
+
+      $scope.link =link;
+      console.log($scope.link)
       
     }).catch(function(error){
       console.error(error);
