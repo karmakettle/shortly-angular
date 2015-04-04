@@ -4,15 +4,18 @@ angular.module('shortly.shorten', [])
   $scope.link = {};
 
   $scope.addLink = function(){
-   Links.addLink()
+  console.log("this is in the controller",$scope.link)
+
+   Links.addLink($scope.link)
     .then(function(link){
       //get the link. 
+      console.log('THIS IS THE LINKS', $scope.link)
 
       $scope.link =link;
-      console.log($scope.link)
       
     }).catch(function(error){
-      console.error(error);
+      console.error("THIS IS THE ERROR",error);
+
     });
   }
 
