@@ -16,7 +16,7 @@ angular.module('shortly.services', [])
   var addLink = function(link){
 
     console.log("inside services addlink function" , link)
-    if(isValidUrl(link)){
+    if(isValidUrl(link.url)){
       return $http({
         method: 'POST',
         url: '/api/links',
@@ -32,16 +32,17 @@ angular.module('shortly.services', [])
     }
   }
 
-  var isValidUrl = function(linkObj){
-    console.log("the string",string)
+  var isValidUrl = function(link){
+    console.log("the string",link)
     var rValidUrl = /^(?!mailto:)(?:(?:https?|ftp):\/\/)?(?:\S+(?::\S*)?@)?(?:(?:(?:[1-9]\d?|1\d\d|2[01]\d|22[0-3])(?:\.(?:1?\d{1,2}|2[0-4]\d|25[0-5])){2}(?:\.(?:[0-9]\d?|1\d\d|2[0-4]\d|25[0-4]))|(?:(?:[a-z\u00a1-\uffff0-9]+-?)*[a-z\u00a1-\uffff0-9]+)(?:\.(?:[a-z\u00a1-\uffff0-9]+-?)*[a-z\u00a1-\uffff0-9]+)*(?:\.(?:[a-z\u00a1-\uffff]{2,})))|localhost)(?::\d{2,5})?(?:\/[^\s]*)?$/i;
-    return linkObj.url.match(rValidUrl);
+    return link.match(rValidUrl);
   }
 
 
   return {
     getLinks : getLinks,
-    addLink : addLink
+    addLink : addLink,
+    isValidUrl: isValidUrl
   }
 
 })

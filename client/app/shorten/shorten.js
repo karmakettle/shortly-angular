@@ -19,4 +19,8 @@ angular.module('shortly.shorten', [])
     });
   }
 
+  $scope.isValidUrl = function(){
+    Links.isValidUrl($scope.link.url);
+  }
+
 });

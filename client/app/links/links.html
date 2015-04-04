@@ -12,13 +12,14 @@
   <h3>Search:</h3>
   <input type= "text" ng-model = "search">
   <hr/>
-  <div ng-repeat = "link in data.links | filter: search | filter: link.visits">
-    <img src='assets/redirect_icon.png'/>
+  <div ng-repeat = "link in data.links | filter: search | orderBy: '-visits'">
     <div class='info'>
+    <img style = "float: left; margin : 10px;" src='assets/redirect_icon.png'/>
       <div class='visits'><span class='count'>{{link.visits}}</span>Visits</div>
       <div class='title'>{{link.title}}</div>
       <div class='original'>{{link.url}}</div>
       <a href='{{link.base_url}}/api/links/{{link.code}}'>{{link.base_url}}/{{link.code}}</a>
+      <hr/>
     </div>
   </div>
 </div>
